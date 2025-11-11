@@ -20,9 +20,9 @@ spec:
             - "--certificate-oidc-issuer"
             - "https://token.actions.githubusercontent.com"
             - "--certificate-identity-regexp"
-            - "https://github.com/UnpredictablePrashant/GitOpsDemoA/.+"
+            - "https://github.com/sudhmca/appRepo/.+"
             #- docker.io/prashantdey/gitops-demo-app@sha256:a8e9dd24f19364ae772b14347afb9638c99a6954b243d2a4a34ac2758890af1b
             - "__IMAGE_REF__"
           env:
             - name: COSIGN_EXPERIMENTAL
-              value: "true"
+              value: "true"ˀ
