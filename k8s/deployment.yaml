@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-deploy
+  namespace: gitops-demo
+  labels:
+    app: demo-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: demo-app
+  template:
+    metadata:
+      labels:
+        app: demo-app
+    spec:
+      containers:
+        - name: web
+          # CI replaces this placeholder with an immutable digest, e.g.
+          # docker.io/<you>/gitops-demo-app@sha256:...
+          image: IMAGE_REF #docker.io/prashantdey/gitops-demo-app@sha256:a8e9dd24f19364ae772b14347afb9638c99a6954b243d2a4a34ac2758890af1b
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3003
+          env:
+            # Set if your app reads PORT from env; safe to include
+            - name: PORT
+              value: "3003"
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3003
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3003
+            initialDelaySeconds: 10
+            periodSeconds: 20
+            timeoutSeconds: 2
+            failureThreshold: 3

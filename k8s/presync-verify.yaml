@@ -1,0 +1,28 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: presync-cosign-verify
+  namespace: gitops-demo
+  annotations:
+    argocd.argoproj.io/hook: PreSync
+    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation,HookSucceeded
+spec:
+  backoffLimit: 0
+  ttlSecondsAfterFinished: 1800 # keep for 30 min
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: cosign-verify
+          image: ghcr.io/sigstore/cosign/cosign:v2.2.4
+          args:
+            - "verify"
+            - "--certificate-oidc-issuer"
+            - "https://token.actions.githubusercontent.com"
+            - "--certificate-identity-regexp"
+            - "https://github.com/UnpredictablePrashant/GitOpsDemoA/.+"
+            #- docker.io/prashantdey/gitops-demo-app@sha256:a8e9dd24f19364ae772b14347afb9638c99a6954b243d2a4a34ac2758890af1b
+            - "__IMAGE_REF__"
+          env:
+            - name: COSIGN_EXPERIMENTAL
+              value: "true"
