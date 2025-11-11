@@ -21,7 +21,7 @@ spec:
             - "https://token.actions.githubusercontent.com"
             - "--certificate-identity-regexp"
             - "https://github.com/sudhmca/appRepo/.+"
-            - docker.io/suverma2/gitops-demo-app@sha256:aed927b0b0bc6633c0d51ed812ecd9f4e72b1905375b99d7264a4687bffd4f95
+            - docker.io/suverma2/gitops-demo-app@sha256:183f830d345137379de999ead57b04ef886c7fee8c3cd978ef966f4d88476e60
           env:
             - name: COSIGN_EXPERIMENTAL
               value: "true"
