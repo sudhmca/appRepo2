@@ -19,7 +19,7 @@ spec:
         - name: web
           # CI replaces this placeholder with an immutable digest, e.g.
           # docker.io/<you>/gitops-demo-app@sha256:...
-          image: docker.io/suverma2/gitops-demo-app@sha256:aed927b0b0bc6633c0d51ed812ecd9f4e72b1905375b99d7264a4687bffd4f95 #docker.io/prashantdey/gitops-demo-app@sha256:a8e9dd24f19364ae772b14347afb9638c99a6954b243d2a4a34ac2758890af1b
+          image: docker.io/suverma2/gitops-demo-app@sha256:183f830d345137379de999ead57b04ef886c7fee8c3cd978ef966f4d88476e60 #docker.io/prashantdey/gitops-demo-app@sha256:a8e9dd24f19364ae772b14347afb9638c99a6954b243d2a4a34ac2758890af1b
           imagePullPolicy: Always
           ports:
             - containerPort: 3003
