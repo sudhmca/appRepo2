@@ -1,2 +1,2 @@
 # appRepo2
-gitOpsinfra
+gitOpsinfra update
