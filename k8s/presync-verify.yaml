@@ -24,4 +24,4 @@ spec:
             - "__IMAGE_REF__"
           env:
             - name: COSIGN_EXPERIMENTAL
-              value: "true"ˀ
+              value: "true"
